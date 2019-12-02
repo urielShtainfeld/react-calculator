@@ -1,10 +1,14 @@
 import React from 'react';
 import './button.scss';
 
-export interface buttonProps{
-    id?: string;
+export interface ButtonProps {
+    onClick: (sign: string) => void;
+    sign: string;
 }
 
-export const Button: React.FC<buttonProps> = ({id}) => {
-    return (<button id={id}>{id}</button>);
+export const Button: React.FC<ButtonProps> = ({ sign, onClick }) => {
+    const handleClick = () => {
+        onClick(sign);
+    }
+    return (<button onClick={handleClick} >{sign}</button>);
 }
